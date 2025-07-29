@@ -4,26 +4,32 @@ import Users from "../pages/Users";
 import Login from "../pages/Login";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
+import Layout from "../Layout";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/register",
-    element: <Register />,
-  },
-  {
-    path: "/users",
-    element: <Users />,
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
+    {
+        element: <Layout />,
+        children: [
+            {
+                path: "/",
+                element: <Home />,
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
+            },
+            {
+                path: "/users",
+                element: <Users />,
+            },
+            {
+                path: "*",
+                element: <NotFound />,
+            },
+        ],
+    },
 ]);
