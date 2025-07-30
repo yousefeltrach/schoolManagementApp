@@ -1,8 +1,8 @@
-import React from 'react'
+import StudentLogin from "../components/student/login"
 
 function Login() {
   return (
-    <div>Login</div>
+    <StudentLogin />
   )
 }
 

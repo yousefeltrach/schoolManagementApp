@@ -1,8 +1,8 @@
-import React from 'react'
+import StudentRegister from '../components/student/register'
 
 function Register() {
   return (
-    <div>Register</div>
+    <StudentRegister />
   )
 }
 
