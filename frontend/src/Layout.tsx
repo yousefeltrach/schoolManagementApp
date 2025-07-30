@@ -6,10 +6,10 @@ export default function Layout() {
   return (
     <>
     <NavBar/>
-    <main>
+    <main className="container mx-auto">
         <Outlet />
     </main>
-    <footer>footer</footer>
+    {/* <footer>footer</footer> */}
     </>
   )
 }
