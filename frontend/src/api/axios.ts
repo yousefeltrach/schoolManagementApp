@@ -1,10 +1,16 @@
-import axios, { type AxiosInstance } from "axios"
+import axios from "axios"
 
-export const axiosClient : AxiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_URL,
-    headers: {
-        "Content-Type": "application/json",
-        withCredentials: true,
-    },
-})
+axios.defaults.withCredentials = true;
 
+export const axiosClient = axios.create({
+  baseURL: import.meta.env.VITE_BACKEND_URL,
+  withCredentials: true,
+});
+
+axiosClient.interceptors.request.use(config => {
+  const xsrfToken = document.cookie.split('; ').find(row => row.startsWith('XSRF-TOKEN='))?.split('=')[1];
+  if (xsrfToken) {
+    config.headers['X-XSRF-TOKEN'] = decodeURIComponent(xsrfToken);
+  }
+  return config;
+});
