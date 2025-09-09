@@ -5,7 +5,10 @@ import Login from "../pages/Login";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Layout from "../Layout";
-import StudentDashboard from "../components/studentlog/StudentDashboard";
+import StudentDashboard from "../components/student/StudentDashboard";
+import GuestLayout from "./GuestLayout";
+import StudentDashboardLayout from "./student/StudentDashboardLayout";
+
 
 export const STUDENT_DASHBOARD_ROUTE = "/student/dashboard";
 export const LOGIN_ROUTE: string = "/login";
@@ -22,10 +25,7 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
-            {
-                path: LOGIN_ROUTE,
-                element: <Login />,
-            },
+            
             {
                 path: "/register",
                 element: <Register />,
@@ -34,13 +34,30 @@ export const router = createBrowserRouter([
                 path: "/users",
                 element: <Users />,
             },
-            {
-                path: STUDENT_DASHBOARD_ROUTE,
-                element: <StudentDashboard />,
-            },
+           
             {
                 path: "*",
                 element: <NotFound />,
+            },
+            {
+                element: <GuestLayout />,
+                children: [
+                     {
+                path: LOGIN_ROUTE,
+                element: <Login />,
+            },
+                ],
+            },
+            {
+                element: <StudentDashboardLayout />,
+                children: [
+                  
+             {
+                path: STUDENT_DASHBOARD_ROUTE,
+                element: <StudentDashboard />,
+            },
+                   
+                ],
             },
         ],
     },
