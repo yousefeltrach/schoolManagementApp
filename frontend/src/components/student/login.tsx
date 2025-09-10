@@ -42,6 +42,7 @@ export default function StudentLogin() {
           (value : AxiosResponse): void => {
           
           if (value.status === 204) {
+            window.localStorage.setItem('ACCESS_TOKEN', 'test')
           navigate(STUDENT_DASHBOARD_ROUTE)
         }
         }

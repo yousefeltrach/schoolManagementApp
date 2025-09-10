@@ -1,8 +1,8 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-import { Menu, GraduationCap } from "lucide-react"
+import { Menu, GraduationCap, Sun, Moon } from "lucide-react"
 import { Link } from "react-router-dom"
 
 
@@ -11,6 +11,15 @@ import { Button } from "./ui/button"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -35,10 +44,28 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setDarkMode(!darkMode)}
+            className="h-9 w-9"
+          >
+            {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
         </nav>
 
         {/* Mobile Navigation */}
         <div className="flex items-center space-x-2 md:hidden">
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setDarkMode(!darkMode)}
+            className="h-9 w-9"
+          >
+            {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            <span className="sr-only">Toggle theme</span>
+          </Button>
           {/* Mobile Menu */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
