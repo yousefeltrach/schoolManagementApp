@@ -14,7 +14,7 @@ import { Input } from "../ui/input"
 import { axiosClient } from "../../api/axios"
 import type { AxiosResponse } from "axios"
 import { useNavigate } from "react-router-dom"
-import { STUDENT_DASHBOARD_ROUTE } from "../../layouts/index"
+import { STUDENT_DASHBOARD_ROUTE } from "../router/index"
 import { Loader } from "lucide-react"
 
 
