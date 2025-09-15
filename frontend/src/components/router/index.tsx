@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-import Register from "../pages/Register";
-import Users from "../pages/Users";
-import Login from "../pages/Login";
-import Home from "../pages/Home";
-import NotFound from "../pages/NotFound";
-import Layout from "../Layout";
-import StudentDashboard from "../components/student/StudentDashboard";
-import GuestLayout from "./GuestLayout";
-import StudentDashboardLayout from "./student/StudentDashboardLayout";
+import Register from "../../pages/Register";
+import Users from "../../pages/Users";
+import Login from "../../pages/Login";
+import Home from "../../pages/Home";
+import NotFound from "../../pages/NotFound";
+import Layout from "../../Layout";
+import StudentDashboard from "../student/StudentDashboard";
+import GuestLayout from "../../layouts/GuestLayout";
+import StudentDashboardLayout from "../../layouts/student/StudentDashboardLayout";
 
 
 export const STUDENT_DASHBOARD_ROUTE = "/student/dashboard";
