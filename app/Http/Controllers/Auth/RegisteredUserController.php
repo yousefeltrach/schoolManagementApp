@@ -30,6 +30,13 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->string('password')),
+            'role' => 'student', // Default role
+        ]);
+
+        // Create a basic student record linked to the user
+        \App\Models\Student::create([
+            'user_id' => $user->id,
+            // Other fields are nullable in DB, so we can skip them for now
         ]);
 
         event(new Registered($user));

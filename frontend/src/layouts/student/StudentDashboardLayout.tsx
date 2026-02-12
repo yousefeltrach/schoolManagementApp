@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import { Sheet, SheetContent, SheetTrigger } from "../../components/ui/sheet"
 import { Button } from "../../components/ui/button"
-import { LOGIN_ROUTE } from "../../components/router"
+import { LOGIN_ROUTE } from "../../router"
 import { axiosClient } from "../../api/axios"
 import { Outlet } from "react-router-dom"
 
@@ -49,8 +49,6 @@ export default function StudentDashboardLayout() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/register", label: "Register" },
-    { href: "/users", label: "Users" },
   ]
 
   const handleLogout = async () => {
