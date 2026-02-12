@@ -25,39 +25,31 @@ export const router = createBrowserRouter([
                 path: "/",
                 element: <Home />,
             },
-            
-            {
-                path: "/register",
-                element: <Register />,
-            },
-            {
-                path: "/users",
-                element: <Users />,
-            },
-           
             {
                 path: "*",
                 element: <NotFound />,
             },
-            {
-                element: <GuestLayout />,
-                children: [
-                     {
+             {
                 path: LOGIN_ROUTE,
                 element: <Login />,
-            },
-                ],
-            },
+            }
+        ],
+    },
+    // {
+    //     element: <GuestLayout />,
+    //     children: [
+    //         {
+    //             path: LOGIN_ROUTE,
+    //             element: <Login />,
+    //         },
+    //     ],
+    // },
+    {
+        element: <StudentDashboardLayout />,
+        children: [
             {
-                element: <StudentDashboardLayout />,
-                children: [
-                  
-             {
                 path: STUDENT_DASHBOARD_ROUTE,
                 element: <StudentDashboard />,
-            },
-                   
-                ],
             },
         ],
     },

@@ -17,10 +17,12 @@ import { Link, useNavigate } from "react-router-dom"
 import { Sheet, SheetContent, SheetTrigger } from "../../components/ui/sheet"
 import { Button } from "../../components/ui/button"
 import { LOGIN_ROUTE } from "../../components/router"
+import { axiosClient } from "../../api/axios"
+import { Outlet } from "react-router-dom"
 
-export default function  StudentDashboardLayout() {
+export default function StudentDashboardLayout() {
   const [isOpen, setIsOpen] = useState(false)
-   const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -31,11 +33,19 @@ export default function  StudentDashboardLayout() {
   }, [darkMode]);
   const navigate = useNavigate()
 
-useEffect(() => {
-  if(window.localStorage.getItem('ACCESS_TOKEN')){
-    navigate(LOGIN_ROUTE)
-  }
-})
+  useEffect(() => {
+    // Verify session-based authentication
+    const checkAuth = async () => {
+      try {
+        await axiosClient.get('/api/user');
+        // User is authenticated, stay on dashboard
+      } catch (error) {
+        // User is not authenticated, redirect to login
+        navigate(LOGIN_ROUTE);
+      }
+    };
+    checkAuth();
+  }, [navigate]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -43,8 +53,12 @@ useEffect(() => {
     { href: "/users", label: "Users" },
   ]
 
-  const handleLogout = () => {
-    window.localStorage.removeItem('ACCESS_TOKEN');
+  const handleLogout = async () => {
+    try {
+      await axiosClient.post('/logout');
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
     navigate(LOGIN_ROUTE);
   };
 
@@ -134,6 +148,7 @@ useEffect(() => {
           </Sheet>
         </div>
       </div>
+      <Outlet />
     </header>
   )
 }

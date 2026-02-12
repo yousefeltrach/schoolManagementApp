@@ -24,75 +24,76 @@ const formSchema = z.object({
 })
 
 export default function StudentLogin() {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues: {
-            email: "yousef@gmail.com",
-            password: "123456789",
-        },
-    })
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "yousef@gmail.com",
+      password: "123456789",
+    },
+  })
 
-     const {setError, formState: {isSubmitting}} = form
-     const navigate = useNavigate()
-     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-       await axiosClient.get('/sanctum/csrf-cookie');
-        // const data = await axiosClient.post('/login', values)
-        await axiosClient.post('/login', values)
-        .then(
-          (value : AxiosResponse): void => {
-          
+  const { formState: { isSubmitting } } = form
+  const navigate = useNavigate()
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    await axiosClient.get('/sanctum/csrf-cookie');
+    // const data = await axiosClient.post('/login', values)
+    await axiosClient.post('/login', values)
+      .then(
+        (value: AxiosResponse): void => {
+
           if (value.status === 204) {
-            window.localStorage.setItem('ACCESS_TOKEN', 'test')
-          navigate(STUDENT_DASHBOARD_ROUTE)
+            // Session-based auth via Sanctum - no token needed
+            navigate(STUDENT_DASHBOARD_ROUTE)
+          }
         }
-        }
-        ) .catch( ({response}) => {
-          console.log(response)
-          const errorMessage = response?.data?.errors?.email?.join() || 'An unexpected error occurred';
-          form.setError('email', {message: errorMessage})
-        }
-          
-        )}
-      
-  
+      ).catch(({ response }) => {
+        console.log(response)
+        const errorMessage = response?.data?.errors?.email?.join() || 'An unexpected error occurred';
+        form.setError('email', { message: errorMessage })
+      }
+
+      )
+  }
+
+
 
   return (
     <>
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-2">
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="Email" {...field} />
-              </FormControl>
-              
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="password"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Password</FormLabel>
-              <FormControl>
-                <Input type="password" placeholder="Password" {...field} />
-              </FormControl>
-            
-              <FormMessage />
-            </FormItem>  
-          )}
-        />
-        <Button disabled={isSubmitting} type="submit">
-            {isSubmitting && <Loader className={'mx-2 my-2 animate-spin'}/>} {' '} Login</Button>
-     
-      </form>
-    </Form>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 mt-2">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="Email" {...field} />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input type="password" placeholder="Password" {...field} />
+                </FormControl>
+
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button disabled={isSubmitting} type="submit">
+            {isSubmitting && <Loader className={'mx-2 my-2 animate-spin'} />} {' '} Login</Button>
+
+        </form>
+      </Form>
     </>
   )
 }
