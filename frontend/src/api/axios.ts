@@ -12,5 +12,8 @@ axiosClient.interceptors.request.use(config => {
   if (xsrfToken) {
     config.headers['X-XSRF-TOKEN'] = decodeURIComponent(xsrfToken);
   }
+  config.headers['Cache-Control'] = 'no-cache, no-store, must-revalidate';
+  config.headers['Pragma'] = 'no-cache';
+  config.headers['Expires'] = '0';
   return config;
 });
