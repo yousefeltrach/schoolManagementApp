@@ -5,7 +5,7 @@ import NotFound from "../pages/NotFound";
 import Layout from "../Layout";
 import GuestLayout from "../layouts/GuestLayout";
 import StudentDashboardLayout from "../layouts/student/StudentDashboardLayout";
-import StudentDashboard from "../components/student/StudentDashboardLayout"; // Check if this is correct import, previously it was aliased
+import StudentDashboard from "../pages/student/StudentDashboard";
 import AdminDashboardLayout from "../layouts/admin/AdminDashboardLayout";
 import TeacherDashboardLayout from "../layouts/teacher/TeacherDashboardLayout";
 import RootLayout from "../layouts/RootLayout";

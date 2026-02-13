@@ -5,11 +5,11 @@ import NavBar from "./components/NavBar";
 export default function Layout() {
   return (
     <>
-    <NavBar/>
-    <main className="container mx-auto">
+      <NavBar />
+      <main>
         <Outlet />
-    </main>
-    {/* <footer>footer</footer> */}
+      </main>
+      {/* <footer>footer</footer> */}
     </>
   )
 }

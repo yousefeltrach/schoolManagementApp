@@ -1,11 +1,4 @@
 
-
-// export default function StudentDashboardLayout() {
-//   return (
-//     <div>StudentDashboardLayout</div>
-//   )
-
-
 "use client"
 
 import { useEffect, useState } from "react"
@@ -20,7 +13,10 @@ import { LOGIN_ROUTE } from "../../router"
 import { axiosClient } from "../../api/axios"
 import { Outlet } from "react-router-dom"
 
+import { useAuth } from "../../context/AuthContext"
+
 export default function StudentDashboardLayout() {
+  const { logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(false);
 
@@ -34,13 +30,10 @@ export default function StudentDashboardLayout() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    // Verify session-based authentication
     const checkAuth = async () => {
       try {
         await axiosClient.get('/api/user');
-        // User is authenticated, stay on dashboard
       } catch (error) {
-        // User is not authenticated, redirect to login
         navigate(LOGIN_ROUTE);
       }
     };
@@ -52,12 +45,7 @@ export default function StudentDashboardLayout() {
   ]
 
   const handleLogout = async () => {
-    try {
-      await axiosClient.post('/logout');
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-    navigate(LOGIN_ROUTE);
+    await logout();
   };
 
   return (
