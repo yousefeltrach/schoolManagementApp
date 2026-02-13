@@ -43,7 +43,7 @@ export default function StudentLogin() {
     setLoginError(null);
     try {
       await login(values);
-      navigate('/student/StudentDashboardLayout');
+      navigate('/student/dashboard');
     } catch (error: any) {
       console.log(error);
       const errorMessage = error?.response?.data?.message || 'Invalid email or password.';

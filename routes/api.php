@@ -16,4 +16,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::apiResource('attendances', \App\Http\Controllers\AttendanceController::class);
     Route::apiResource('grades', \App\Http\Controllers\GradeController::class);
     Route::get('/admin/stats', [\App\Http\Controllers\DashboardController::class, 'adminStats']);
+    Route::apiResource('users', \App\Http\Controllers\UserController::class)->only(['index', 'destroy']);
 });

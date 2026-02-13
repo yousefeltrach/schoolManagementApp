@@ -40,5 +40,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'student',
         ]);
         \App\Models\Student::create(['user_id' => $studentUser->id]);
+
+        $this->call(SchoolDataSeeder::class);
     }
 }

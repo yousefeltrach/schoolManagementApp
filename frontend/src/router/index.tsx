@@ -13,6 +13,9 @@ import ProtectedRoute from "../components/ProtectedRoute";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import TeacherDashboard from "../pages/teacher/TeacherDashboard";
 import CreateTeacher from "../pages/admin/CreateTeacher";
+import ManageClasses from "../pages/admin/ManageClasses";
+import ManageSubjects from "../pages/admin/ManageSubjects";
+import ManageUsers from "../pages/admin/ManageUsers";
 
 import Register from "../pages/Register";
 
@@ -96,6 +99,18 @@ export const router = createBrowserRouter([
                             {
                                 path: "/admin/teachers/create",
                                 element: <CreateTeacher />,
+                            },
+                            {
+                                path: "/admin/classes",
+                                element: <ManageClasses />,
+                            },
+                            {
+                                path: "/admin/subjects",
+                                element: <ManageSubjects />,
+                            },
+                            {
+                                path: "/admin/users",
+                                element: <ManageUsers />,
                             },
                         ],
                     },
