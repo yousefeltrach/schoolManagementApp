@@ -62,10 +62,7 @@ export default function StudentRegister() {
     try {
       await axiosClient.get('/sanctum/csrf-cookie');
       await axiosClient.post('/register', data);
-
       await getUser();
-
-      // Navigate to student dashboard or home
       navigate('/student/dashboard');
 
     } catch (error: any) {
@@ -108,7 +105,7 @@ export default function StudentRegister() {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} disabled={isLoading} />
+                    <Input placeholder="Name..." {...field} disabled={isLoading} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

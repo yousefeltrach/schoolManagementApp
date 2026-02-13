@@ -17,13 +17,27 @@ class TeacherController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'user_id' => 'required|exists:users,id',
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
             'specialization' => 'nullable|string',
             'phone' => 'nullable|string',
         ]);
 
-        $teacher = Teacher::create($validated);
-        return response()->json($teacher, 201);
+        $user = \App\Models\User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => \Illuminate\Support\Facades\Hash::make($validated['password']),
+            'role' => 'teacher',
+        ]);
+
+        $teacher = Teacher::create([
+            'user_id' => $user->id,
+            'specialization' => $validated['specialization'] ?? null,
+            'phone' => $validated['phone'] ?? null,
+        ]);
+
+        return response()->json($teacher->load('user'), 201);
     }
 
     public function show(Teacher $teacher)

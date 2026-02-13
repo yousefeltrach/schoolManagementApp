@@ -76,7 +76,6 @@ export default function StudentDashboard() {
             {/* Main Content Area */}
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
 
-                {/* Class Schedule / List */}
                 <Card className="col-span-4">
                     <CardHeader>
                         <CardTitle>My Classes</CardTitle>
@@ -84,7 +83,6 @@ export default function StudentDashboard() {
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-4">
-                            {/* Placeholder for when no classes */}
                             <div className="flex flex-col items-center justify-center p-8 text-center border-2 border-dashed rounded-lg">
                                 <GraduationCap className="h-10 w-10 text-muted-foreground mb-4" />
                                 <h3 className="text-lg font-semibold">No Classes Enrolled</h3>

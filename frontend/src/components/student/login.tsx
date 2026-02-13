@@ -43,12 +43,9 @@ export default function StudentLogin() {
     setLoginError(null);
     try {
       await login(values);
-      // Navigation is handled in AuthContext or ProtectedRoute if needed,
-      // but explicitly navigating here ensures smooth UX.
-      navigate('/student/dashboard');
+      navigate('/student/StudentDashboardLayout');
     } catch (error: any) {
       console.log(error);
-      // extract error message if available
       const errorMessage = error?.response?.data?.message || 'Invalid email or password.';
       setLoginError(errorMessage);
     }

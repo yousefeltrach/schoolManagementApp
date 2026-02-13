@@ -22,6 +22,7 @@ export default function AdminDashboardLayout() {
                 <nav className="p-4 space-y-2">
                     <Link to="/admin/dashboard" className="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Dashboard</Link>
                     <Link to="/admin/users" className="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Manage Users</Link>
+                    <Link to="/admin/teachers/create" className="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Add Teacher</Link>
                     <Link to="/admin/classes" className="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Manage Classes</Link>
                     <Link to="/admin/subjects" className="block p-2 rounded hover:bg-gray-200 dark:hover:bg-gray-700">Manage Subjects</Link>
                 </nav>

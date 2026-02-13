@@ -12,6 +12,7 @@ import RootLayout from "../layouts/RootLayout";
 import ProtectedRoute from "../components/ProtectedRoute";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import TeacherDashboard from "../pages/teacher/TeacherDashboard";
+import CreateTeacher from "../pages/admin/CreateTeacher";
 
 import Register from "../pages/Register";
 
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
                             {
                                 path: ADMIN_DASHBOARD_ROUTE,
                                 element: <AdminDashboard />,
+                            },
+                            {
+                                path: "/admin/teachers/create",
+                                element: <CreateTeacher />,
                             },
                         ],
                     },
