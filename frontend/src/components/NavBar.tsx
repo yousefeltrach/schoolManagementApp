@@ -11,7 +11,7 @@ import { Button } from "./ui/button"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-   const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     if (darkMode) {
@@ -25,7 +25,6 @@ export default function Navbar() {
     { href: "/", label: "Home" },
     { href: "/login", label: "Login" },
     { href: "/register", label: "Register" },
-    { href: "/users", label: "Users" },
   ]
 
   return (
