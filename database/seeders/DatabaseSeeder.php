@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
-        // Create Admin User
+       
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@edumanage.com',
@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // Create Teacher User
+       
         $teacherUser = User::factory()->create([
             'name' => 'Teacher User',
             'email' => 'teacher@edumanage.com',
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
         \App\Models\Teacher::create(['user_id' => $teacherUser->id]);
 
-        // Create Student User (Yousef)
+       
         $studentUser = User::factory()->create([
             'name' => 'yousef',
             'email' => 'yousef@gmail.com',

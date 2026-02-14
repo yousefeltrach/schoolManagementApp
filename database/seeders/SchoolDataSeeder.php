@@ -10,7 +10,7 @@ class SchoolDataSeeder extends Seeder
 {
     public function run()
     {
-        // 1. Create Subjects
+    
         $subjects = [
             'Mathematics',
             'Physics',
@@ -28,7 +28,7 @@ class SchoolDataSeeder extends Seeder
             Subject::firstOrCreate(['name' => $subject, 'code' => strtoupper(substr($subject, 0, 3)) . rand(100, 999)]);
         }
 
-        // 2. Create Classes
+        
         $classes = [
             'Grade 10-A', 'Grade 10-B', 'Grade 10-C',
             'Grade 11-A', 'Grade 11-B', 'Grade 11-C',
